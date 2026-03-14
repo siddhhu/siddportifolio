@@ -1,943 +1,550 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddharth Kumar | Senior Software Engineer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* --- GenAI Preloader --- */
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--bg-dark);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+            backdrop-filter: blur(10px);
+        }
 
- <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<title>Siddharth Kumar</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+        .loader-content {
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+            animation: pulse-glow 2s infinite alternate;
+        }
 
-   <!-- mobile specific metas
-   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        @keyframes pulse-glow {
+            from {
+                filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2));
+            }
 
- 	<!-- CSS
-   ================================================== -->
-   <link rel="stylesheet" href="css/base.css">
-   <link rel="stylesheet" href="css/main.css">
-   <link rel="stylesheet" href="css/vendor.css">
+            to {
+                filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.6));
+            }
+        }
 
-   <!-- script
-   ================================================== -->
-	<script src="js/modernizr.js"></script>
-	<script src="js/pace.min.js"></script>
+        .loader-spinner {
+            width: 65px;
+            height: 65px;
+            border: 4px solid var(--glass-border);
+            border-top-color: var(--accent-primary);
+            border-right-color: var(--accent-secondary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
 
-   <!-- favicons
-	================================================== -->
-	<link rel="icon" type="image/png" href="favicon.png">
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
+        .loader-title {
+            color: var(--text-main);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .loader-fact {
+            color: var(--accent-secondary);
+            font-size: 1.1rem;
+            font-style: italic;
+            line-height: 1.6;
+            min-height: 60px;
+            font-weight: 500;
+        }
+
+        .loader-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
 </head>
 
-<body id="top">
-
-	<!-- header
-   ================================================== -->
-   <header>
-   	<div class="row">
-
-   		<div class="top-bar">
-   			<a class="menu-toggle" href="#"><span>Hello</span></a>
-
-	   		<div class="">
-		         <a href="index.html">Siddharth Kumar</a>
-		      </div>
-
-		   	<nav id="main-nav-wrap">
-					<ul class="main-navigation">
-						<li class="current"><a class="smoothscroll"  href="#intro" title="">Home</a></li>
-						<li><a class="smoothscroll"  href="#about" title="">About Me</a></li>
-						<li><a class="smoothscroll"  href="#work" title="">My Experience</a></li>
-
-						<li><a class="smoothscroll"  href="#train" title="">Training & Certifications </a></li>
-						<li><a class="smoothscroll"  href="#project" title="">My Projects</a></li>
-						<li><a class="smoothscroll"  href="#case" title="">My Case Studies</a></li>
-						<li><a class="smoothscroll"  href="#contact" title="">Contact Me</a></li>
-						<li><a class="smoothscroll"  href="#MORE" title="">My Interests & More</a></li>
-
-					</ul>
-				</nav>
-   		</div> <!-- /top-bar -->
-
-   	</div> <!-- /row -->
-   </header> <!-- /header -->
-
-	<!-- intro section
-   ================================================== -->
-	
-	
-   <section id="intro">
-
-   	<div class="intro-overlay"></div>
-
-   	<div class="intro-content">
-   		<div class="row">
-
-   			<div class="col-twelve">
-
-	   			<h5>Hello, Visitor</h5>
-	   			<h1>I'm Siddharth Kumar</h1>
-
-	   			<p class="intro-position">
-				    <span>Python Expert
-</span>
-					<span>Quality Automation Engineer</span>
-						   				<span>Performance Engineer</span>
-
-					
-					
-	   				
-	   			</p>
-
-	   			<a class="button stroke smoothscroll" href="#about" title="">Discover More</a>
-
-	   		</div>
-
-   		</div>
-   	</div> <!-- /intro-content -->
-
-
-
-   </section> <!-- /intro -->
-
-
-   <!-- about section
-   ================================================== -->
- 
- <section id="about">
-   	<div class="row section-intro">
-			 
-   		<div class="col-twelve">
-
-
-   			<h1 style="color:red;">ABOUT ME</h1>
-
-			   <hr>
-			
-
-
-   			<div class="intro-info">
-
-   				<img src="certificate/siddharth.png" alt="Profile Picture" class="rounded-circle"><div class="container-fluid">
-				<p style="color:black;"><strong>
-				With over 3 years of experience, I am a versatile and result-driven professional specializing in automation using Python, CI/CD pipelines with TeamCity, database testing, and API testing. I have hands-on expertise in cloud technologies such as AWS and performance testing with tools like Neoload. Passionate about exploring emerging technologies, I focus on designing scalable solutions and optimizing workflows. I excel at solving complex problems, ensuring high-quality deliverables, and driving impactful results through innovative automation and testing strategies.</strong> </p></div>
-
-   			</div>
-
-   		</div>
-   	</div> <!-- /section-intro -->
-
-   	<div class="row about-content">
-
-   		<div class="col-six tab-full">
-
-   			<h2 style="color:red;">MY BIO </h2>
-
-
-   			<ul class="info-list">
-   				<li>
-   					<strong>Name :</strong>
-   					<span >Siddharth Kumar</span>
-   				</li>
-   				<li>
-   					<strong>Date of Birth :</strong>
-   					<span>Born on : 27 / 03 / 2001</span>
-   				</li>
-                <li>
-   					<strong>Email :</strong>
-   					<span>anandsiddhartha134@gmail.com</span>
-   				</li>
-                <li>
-   					<strong>Address :</strong>
-   					<span>Pune, Maharashtraspan>
-   				</li>
-   				<li>
-   					<strong>Phone :</strong>
-   					<span>+91 7061483898</span>
-   				</li>
-
-
-   			</ul> <!-- /info-list -->
-
-   		</div>
-
-<div class="col-six tab-full">
-    <h2 style="color:red;">COMPETENCES</h2>
-
-    <ul class="skill-bars">
-        <li>
-            <div class="progress percent90"><span>90%</span></div>
-            <strong>PYTHON PROGRAMMING</strong>
-        </li>
-        <li>
-            <div class="progress percent85"><span>85%</span></div>
-            <strong>SCALA</strong>
-        </li>
-        <li>
-            <div class="progress percent85"><span>85%</span></div>
-            <strong>SELENIUM</strong>
-        </li>
-        <li>
-            <div class="progress percent95"><span>95%</span></div>
-            <strong>PYTEST, UNITEST</strong>
-        </li>
-        <li>
-            <div class="progress percent85"><span>85%</span></div>
-            <strong>POSTGRESQL</strong>
-        </li>
-        <li>
-            <div class="progress percent85"><span>85%</span></div>
-            <strong>JENKINS/TeamCity</strong>
-        </li>
-        <li>
-            <div class="progress percent95"><span>95%</span></div>
-            <strong>API TESTING</strong>
-        </li>
-        <li>
-            <div class="progress percent80"><span>80%</span></div>
-            <strong>Performance Testing</strong>
-        </li>
-        <li>
-            <div class="progress percent95"><span>95%</span></div>
-            <strong>Database Testing</strong>
-        </li>
-        <li>
-            <div class="progress percent70"><span>70%</span></div>
-            <strong>ETL Testing</strong>
-        </li>
-        <li>
-            <div class="progress percent75"><span>75%</span></div>
-            <strong>AWS Technologies</strong>
-        </li>
-    </ul> <!-- /skill-bars -->
-</div>
-
-
-   	<div class="row button-section">
-   		<div class="col-twelve">
-   			<a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a>
-   			<a href="Siddharth_Kumar_ST.pdf" download="certificate/Siddharth_Kumar_ST.pdf" target="_blank" title="Download CV" class="button button-primary">Download my CV</a>
-   		</div>
-   	</div>
-<hr>
-   </section> <!-- /process-->
-
-
-   <!-- resume Section
-   ================================================== -->
-	<section id="project" class="grey-section">		
-<div class="row resume-timeline">
-    <div class="col-twelve resume-header">
-        <h2 style="font-size:40px">My Experience :</h2>
-    </div>
-    <br>
-    <hr>
-
-    <div class="col-twelve" id="work" >
-        <div class="timeline-wrap">
-
-            <!-- ZS Associates Experience -->
-            <div class="timeline-block">
-                <div class="timeline-ico">
-                    <i class="fa fa-briefcase"></i>
-                </div>
-
-                <div class="timeline-header">
-                    <h2>ZS Associates – Software Test Engineer (July 2022 – Present)</h2>
-                    <p><strong>As a Software Test Engineer, my role involves ensuring quality and performance in software delivery. Key contributions include:
-                        <ul>
-                            <li>End-to-end testing of data-driven, AI-empowered applications, focusing on backend databases, ETL pipelines, and APIs.</li>
-                            <li>Streamlined automation processes, saving 40% of team time and ensuring timely project delivery.</li>
-                            <li>Developed a Python framework for automating performance engineering, significantly improving bug detection timelines.</li>
-                            <li>Created a Flask-based real-time dashboard for centralizing key performance indicators, enabling quicker insights.</li>
-                            <li>Enhanced application scalability by 4x through collaboration and performance optimization with the development team.</li>
-                        </ul>
-                    </strong></p>
-                    <div>
-                        <i class="fa fa-linkedin" aria-hidden="true" style="color:black">&nbsp;&nbsp; &nbsp;&nbsp;<a href="https://www.linkedin.com/company/zs-associates" target="_blank"><strong>Visit ZS Associates</strong></a></i>
-                    </div>
-                </div>
-                <hr>
-            </div>
-
-            <!-- Frugal Testing Experience -->
-            <div class="timeline-block">
-                <div class="timeline-ico">
-                    <i class="fa fa-briefcase"></i>
-                </div>
-
-                <div class="timeline-header">
-                    <h2>Frugal Testing – SDET Intern (June 2021 – June 2022)</h2>
-                    <p><strong>As an SDET Intern, I contributed to improving application scalability and performance. Key achievements include:
-                        <ul>
-                            <li>Played a pivotal role in optimizing Grab’s dynamic ecosystem by conducting thorough load testing for trip creation,
-ensuring the application’s bandwidth could effortlessly handle high traffic volumes.</li>
-				                            <li>To expedite testing speed and free up valuable team resources, I developed a suite of JavaScript scripts that
-automate various aspects of trip creation. These scripts have significantly streamlined our testing process, saving
-considerable time per trip.</li>
-
-                            <li>Automated repetitive testing tasks using JavaScript, improving testing efficiency and reducing team workload.</li>
-                        </ul>
-                    </strong></p>
-                    <div>
-                        <i class="fa fa-linkedin" aria-hidden="true" style="color:black">&nbsp;&nbsp; &nbsp;&nbsp;<a href="https://www.linkedin.com/company/frugaltesting/" target="_blank"><strong>Visit Frugal Testing</strong></a></i>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <!-- EnR Consultancy Services Experience -->
-            <div class="timeline-block">
-                <div class="timeline-ico">
-                    <i class="fa fa-briefcase"></i>
-                </div>
-
-                <div class="timeline-header">
-                    <h2>EnR Consultancy Services – Software Engineer Intern (June 2021 – December 2021)</h2>
-                    <p><strong>As a Software Engineer Intern, I worked on innovative projects to optimize education technology:
-                        <ul>
-                            <li>Developed a secure Online Examination Portal with proctored exams and results delivery, built with Django and PostgreSQL. The system included admin and student portals and integrated chat support.</li>
-                            <li>Created a sophisticated Face-Based Attendance System using Python, Flask, and OpenCV. This system replaced manual attendance methods with webcam-based recognition and database integration.</li>
-                        </ul>
-                    </strong></p>
-                    <div>
-                        <i class="fa fa-linkedin" aria-hidden="true" style="color:black">&nbsp;&nbsp; &nbsp;&nbsp;<a href="https://www.linkedin.com/company/engage-reap-consultancy-services/" target="_blank"><strong>Visit ENR Consultancy</strong></a></i>
-                    </div>
-                </div>
-                <hr>
-            </div>
-
-            <!-- Education -->
-
-				            <div class="timeline-block">
-                <div class="timeline-ico">
-                    <i class="fa fa-graduation-cap"></i>
-                </div>
-
-                <div class="timeline-header">
-                    <h2>Education</h2>
-                    <p>
-                        <strong>Bachelor of Technology in Computer Science and Engineering</strong> – Lovely Professional University (2018 – 2022, CGPA: 8.5)<br>
-                        <strong>Class XII</strong> – BSEB (2016 – 2018, Percentage: 72.8)
-                    </p>
-                </div>
-                <hr>
-            </div>
-
+<body class="theme-genai">
+    <!-- GenAI Preloader -->
+    <div id="genai-loader" class="loader-overlay">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p id="loader-fact" class="loader-fact"></p>
         </div>
     </div>
-</div>
-
-
-   	<div class="row resume-timeline">
-
-   		<div class="col-twelve resume-header">
-
-   			<h2 style="font-size:40px">My Projects :</strong></h2>
-   		</div> <!-- /resume-header -->
-		   <br>
-		   <hr>
-
-   		<div class="col-twelve">
-
-   			<div class="timeline-wrap">
-				<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-graduation-cap"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2> Face based Attendance System (06/2020 – 07/2020)</h2>
-					<p><strong>When I was in school, attendance was taken in paper or register but with the advancement of technology we should not rely on copy or pen as copy is made by cutting trees which is now required to be preserved.It has been implemented with the help of Python,open cv, Machine Learning.
-This project is really cool as what it does is simply take picture of student through webcam matches the face with the face present in database and recognise the name and save the details of student in database with timing and date. If the student is new and the face recogniser didn't recognise the face then simply student can register as student, fill his name and then capture the image. Later on when the same student will punch his attendance then the same student will be recognised and the details will be saved in database. Whole detail of student that are present in database can be fetched by class teacher by logging into the admin panel.</strong>
-					</p>
-					<div>
-
-<i class="fa fa-youtube" aria-hidden="true" style="color:black">&nbsp;&nbsp; &nbsp;&nbsp;<a href= "https://youtu.be/8JWNaQJibV8"><strong>Watch Project demo</strong></i> </a>
-
-						</div>
-	   				</div>
-					   <hr>
-					
-
-   				<div class="timeline-block">
-
-	   			<div class="timeline-ico">
-	   					<i class="fa fa-graduation-cap"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2> Preparation Checker  (12/2019 – 02/2020)</h2>
-					<p><strong>I have seen a lot of student goes into depression even if they have worked hard for there NEET exam because they overthink whether he/she will clear the exam or not.This over thinking may be proved fatal and can result in less marks due to depression. I have created a machine learning model and deployed it using flask which can tell about chance of cracking the exam given certain parameter such as number of hour studied daily, syllabus completed till now, whether the student is dropper or fresher, whether he is coaching student or he /she has studied by own. So at the time of examination this application can motivate the student not to worry if the student has worked hard.<br><br>
-
-Please watch the video if you want to know the working of the application link of the application has been given below.
-
-</strong>
-					</p>
-					<div>
-<i class="fa fa-youtube" aria-hidden="true" style="color:black">&nbsp;&nbsp; &nbsp;&nbsp;<a href= "https://youtu.be/CdtqLGHr7FA"><strong>Watch Project demo</strong></i> </a>
-						
-						</div>
-	   				</div>
-					   <hr>
-	   			</div> <!-- /timeline-block -->
-
-	   			<div class="timeline-ico">
-	   					<i class="fa fa-graduation-cap"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2> Decision Review System  (08/2019 – 10/2019)</h2>
-					<p><strong>This application might be helpful in avoiding cheating that is common in gully cricket.Using this application one can act as a third umpire and can give decision of out or not out.It has been implemented for LBW, Run out, Low catch, Stump out.This is created with the help of opencv and python.I have also added text to speech module of microsoft so when a decision is taken then machine itself speaks about the decision that whether the player is out or not out which make this project more classy.
-
-</strong>
-					</p>
-					<div>
-
-						<i class="fa fa-youtube" aria-hidden="true" style="color:black">&nbsp;&nbsp; &nbsp;&nbsp;<a href= "https://youtu.be/tBMmEmXSBeU"><strong>Watch Project demo</strong></i> </a>
-						</div>
-	   				</div>
-					   <hr>
-	   			</div> 
-
-				   <div class="timeline-ico">
-	   					<i class="fa fa-graduation-cap"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2> Library Chatbot for University Services (03/2020 – 05/2020)</h2>
-					<p><strong>This was one of the project that i have created using the concept of Deep Learning.I have used 5 hidden layer in this project and made UI part with the help of python's module i.e. tkinter.I named the bot as jarvis and jarvis was helpful in asking simple queries like late fine,time of opening of library,which books are available e.t.c. chatbot was helpful in the sense that student who don't willing to go to library for asking the simple queries related to library, they can ask all the things from the jarvis and jarvis will reply all their queries.
-
-</strong>
-					</p>
-					<div>
-						<i class="fa fa-youtube" aria-hidden="true" style="color:black">&nbsp;&nbsp; &nbsp;&nbsp;<a href= "https://drive.google.com/file/d/1zF5ovAQ_W6QLI1zRq9bC05Nb15sZB7eL/view?usp=sharing"><strong>Watch Project demo</strong></i> </a>
-						</div>
-	   				</div>
-					   <hr>
-	   			</div> 
-				   <div class="timeline-ico">
-	   					<i class="fa fa-graduation-cap"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2> Auditorium Ticket booking system  (10/2018 – 12/2018)</h2>
-					<p><strong>I have created this project in first year which was made with the help of c++.I have used a lot of libraries of c++ including graphics for UI of seat. It was helpful in booking the ticket ,cancelling it. After booking it was showing the no of available seat and number of booked seat at a given instant of time. A person if want can cancel the ticket and after deducting the service charge refund was initiated.A person can book as many seat he want.
-
-</strong>
-					</p>
-					<div>
-						<i class="fa fa-youtube" aria-hidden="true" style="color:black">&nbsp;&nbsp; &nbsp;&nbsp;<a href= "https://drive.google.com/file/d/1580-2C3KOVcGqrvFSzuPPHk0IM5l-VCx/view?usp=sharing"> <strong>Watch Project Demo </strong></i> </a>
-	   				</div>
-					   <hr>
-	   			</div> 
-				   
-
-
-   			</div> <!-- /timeline-wrap -->
-
-   		</div> <!-- /col-twelve -->
-
-   	</div> <!-- /resume-timeline -->
-	<section id="case">
-
-   	<div class="row resume-timeline">
-
-   		<div class="col-twelve resume-header">
-
-   			<h2 style="font-size:40px">Data Science case studies:</strong></h2>
-<hr>
-   		</div> <!-- /resume-header -->
-
-   		<div class="col-twelve">
-
-   			<div class="timeline-wrap">
-
-   				<div class="timeline-block">
-
-	   			<div class="timeline-ico">
-	   				<i class="fa fa-file" aria-hidden="true"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2> Titanic ship case study</h2>
-					<p><strong>The problem statement of this case study was to predict chance of survival of male and female present in the ship. I used logistic regression to find that first of all i went through data preprocessing step i.e. cleaned the data, removed missing value, removed unwanted columns ansd then fitted the data in to the model and predicted the result and got that chance of survival for female was high in the ship.
-
-</strong>
-					</p>
-
-
-					    <div>
-						<i class="fa fa-github" aria-hidden="true" style="color:black"></i>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; <strong><a href="https://github.com/siddhhu/Titaniccasestudy">View source code</strong></a>
-						</div>
-					   <hr>
-
-	   			</div> <!-- /tim
-
-	   			<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-briefcase"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>A course of "Ethical Hacking" by cyberhack (09/2018)</h3>
-	   					<p>I have done this course in my university. This course also helped me to learn different type of tools like burpsuit, metasploits. This course helped me to know about bug bounty, pentration testing and brute-force attack.</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   				</div>
-
-	   			</div> <!-- /timeline-block -->
-
-	   		<div class="timeline-block">
-
-	   			<div class="timeline-ico">
-	   				<i class="fa fa-file" aria-hidden="true"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2> Employee salary case study</h2>
-					<p><strong>The problem statement of this case study was to predict employee salary based on test score, number of skills and last not the least experience year they have. I used XGBoost regressor to do so, first of all checked missing value and there were no missing value then divided columns present in the dataset into independent and dependent variables after that i splited dataset in training and test set,fitted data in to model and predicted the result and found the salary an employee can get.
-
-</strong>
-					</p>
-
-					    <div>
-						<i class="fa fa-github" aria-hidden="true" style="color:black"></i>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; <strong><a href="https://github.com/siddhhu/sal-pred">View source code</strong></a>
-						</div>
-					   <hr>
-
-
-					   
-	   			</div> 
-	   			<div class="timeline-block">
-
-	   			<div class="timeline-ico">
-	   				<i class="fa fa-file" aria-hidden="true"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2> Impact of lockdown on pollution case study</h2>
-					<p><strong>The problem statement of this case study was to see if the claim of reduced air pollution is being actually backed by data or not. On March 25 2020, the Indian government placed its population of more than 1.3 billion citizens under lockdown in an effort to reduce the spread of the COVID-19 disease. All non-essential shops, markets and places of worship were closed with only essential services including water, electricity and health services remaining active.
-
-Citizens started to experience better air quality so much so that the scenic Dhauladhar Peaks of Himachal Pradesh became visible from neighbouring states. On normal days, these peaks lie hidden behind he film of smog and through the analysis we found that the claim of reduced air pollution is actually true. I have also made Air quality checker using Random forest and deployed it using flask.This AQI checker will be beneficial for people who want to know air quality of their area.
-
-</strong>
-					</p>
-
-					   <div>
-						<i class="fa fa-github" aria-hidden="true" style="color:black"></i>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; <strong><a href="https://github.com/siddhhu/Flask-Deployment-of-AQI">View source code</strong></a>
-						</div>
-					   <hr>
-	   			</div> 
-					</section>
-					<section id="train">
-
-   	<div class="row resume-timeline">
-
-   		<div class="col-twelve resume-header">
-
-   			<h2 style="font-size:40px">Training and Certifications :</strong></h2>
-<hr>
-
-   		</div> <!-- /resume-header -->
-
-   		<div class="col-twelve">
-
-   			<div class="timeline-wrap">
-
-   				<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   				<i class="fa fa-book" aria-hidden="true"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2>Python for Data Science </h2>
-	   				</div>
-
-	   				<div class="timeline-content">
-
-	   					<p><strong>I have done this course on swayam and have got silver medal. This course helped me in developing basic skills in data science. It also helped me in learning python programming.</strong></p>
-	   				</div>
-					   	<div>
-						<i class="fa fa-certificate" aria-hidden="true" style="color:black"></i>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; <strong><a href="certificate/swayam.jpg">View Certificate:</strong></a>
-						</div>
-					   <hr>
-
-	   			</div> <!-- /timeline-block -->
-
-	   			<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   				<i class="fa fa-book" aria-hidden="true"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2>Introduction to data analytics</h2>
-	   					<p><strong>Through this course I learned about different type of analysis technique that is descriptive analytics,diagnostic analytics,predictive analysis and prescriptive analysis.Got an idea when to use which type of analytics.</strong></p>
-	   				</div>
-					   	<div>
-						<i class="fa fa-certificate" aria-hidden="true" style="color:black"></i>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; <strong><a href="certificate/analytics.pdf">View Certificate:</strong></a>
-						</div>
-					   <hr>
-
-	   				<div class="timeline-content">
-	   				</div>
-
-	   			</div> <!-- /timeline-block -->
-
-	   			<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   				<i class="fa fa-book" aria-hidden="true"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2>Excel for Business Essentials</h2>
-	   					<p><strong>This was an awesome course from coursera where i learned how we can take help of excel in the journey of data science. Leaned about formatting, sorting, merging and how we can make powerful report using excel.</strong></p>
-	   				</div>
-					   	<div>
-						<i class="fa fa-certificate" aria-hidden="true" style="color:black"></i>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; <strong><a href="certificate/excel.pdf">View Certificate:</strong></a>
-						</div>
-					   <hr>
-
-					   <div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-book" aria-hidden="true"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2>Introduction to Big Data</h2>
-	   					<p><strong>Due to promising result of digitalization people are now switching to digital era and because of this data is also getting generated at very high speed.we need to study these datsa so as to give better result to the consumers and for that we need to understand big data.I have learnt little about hadoop,spark,hive,map reduce and how we can deal large amount of data through hadoop in this course.</strong></p>
-	   				</div>
-					   	<div>
-						<i class="fa fa-certificate" aria-hidden="true" style="color:black"></i>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; <strong><a href="certificate/bigdata.pdf">View Certificate:</strong></a>
-						</div>
-					   <hr>
-					   <div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   				<i class="fa fa-book" aria-hidden="true"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2>Introduction to Tensorflow & Deep Learning</h2>
-	   					<p><strong>I have learned backpropogation,hidden layer,gradient descent,forward propogation,activation function,optimizer also learnt about different technique used in deep learning i.e. CNN,ANN & RNN in this course.I also learned how we can implement deep learning on the top of tensorflow.</strong></p>
-	   				</div>
-					   	<div>
-						<i class="fa fa-certificate" aria-hidden="true" style="color:black"></i>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; <strong><a href="certificate/dl.pdf">View Certificate:</strong></a>
-						</div>
-					   <hr>
-					   <div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-book" aria-hidden="true"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2>Docker for Data Scientist</h2>
-	   					<p><strong>This was a small but a impactful course on how we can use docker on our machine learning model.I learnt about different commands that are used in docker, got an overview of dockerfile, docker image & containerization. </strong></p>
-	   				</div>
-					   	<div>
-						<i class="fa fa-certificate" aria-hidden="true" style="color:black"></i>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; <strong><a href="certificate/docker.pdf">View Certificate:</strong></a>
-						</div>
-					   <hr>
-
-	   				<div class="timeline-content">
-	   				</div>
-	   				<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   				<i class="fa fa-book" aria-hidden="true"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h2>A microlearning course on Data Science</h2>
-	   					<p><strong>In this Course i learnt about maths behind data science,learnt about MSQL Database, Data visualization and story telling using Tableau. This course was wonderful as it helped me in understanding mathematics behind machine learning algorithms<strong> </p>
-	   				</div>
-					   	<div>
-						<i class="fa fa-certificate" aria-hidden="true" style="color:black"></i>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; <strong><a href="certificate/boardinfinity.pdf">View Certificate:</strong></a>
-						</div>
-					   <hr>
-
-					
-
-	   			</div> <!-- /timeline-block -->
-
-   			</div> <!-- /timeline-wrap -->
-
-   		</div> <!-- /col-twelve -->
-
-   	</div> <!-- /resume-timeline -->
-
-
-	   
-
-	</section> <!-- /features -->
-
-	   			</div> <!-- /timeline-block -->
-
-   			</div> <!-- /timeline-wrap -->
-
-   		</div> <!-- /col-twelve -->
-
-   	</div> <!-- /resume-timeline -->
-
-	</section> <!-- /features -->
-	
-
-
-	<!-- Portfolio Section
-   ================================================== -->
-
-
-
-	<!-- CTA Section
-   ================================================== -->
-
-
-	<!-- services Section
-   ================================================== -->
-	<section id="MORE">
-
-		<div class="overlay"></div>
-
-		<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h5>MORE</h5>
-
-
-
-
-   		</div>
-   	</div> <!-- /section-intro -->
-
-   	<div class="row services-content">
-
-   		<div id="owl-slider" class="owl-carousel services-list">
-
-   			<div class="service">
-
-			   	<span class="icon"><i class="icon-window"></i></span>
-
-	            <div class="service-content">
-
-	            	<h3>SYSTEMS & DATABASES</h3>
-
-		            <p class="desc">
-					* Data Structure & Algorithms<br>* Windows<br> * Ubuntu </br>* MySQL.
-	        			</p>
-
-	            </div>
-
-			   </div> <!-- /service --><div class="service">
-
-					<span class="icon"><i class="icon-earth"></i></span>
-
-	            <div class="service-content">
-
-	            	<h3>LANGUAGES EXPERTISE :</h3>
-
-		            <ul class="skill-bars">
-				   <li>
-				   	<div class="progress percent85"><span>85%</span></div>
-				   	<strong>English>
-				   </li>
-				   <li>
-				   	<div class="progress percent100"><span>100%</span></div>
-				   	<strong>Hindi</strong>
-				   </li>
-				   <li>
-				   	<div class="progress percent95"><span>95%</span></div>
-				   	<strong>Maithali</strong>
-				   </li>
-				   </ul>
-
-	            </div>
-	            </div> <!-- /services-list -->
-
-	      	<div class="service">
-
-	      		<span class="icon"><i class="icon-chat"></i></span>
-
-	            <div class="service-content">
-
-	            	 <h3>Personality :</h3>
-
-		            <p class="desc">* Smart Worker<br>* Disciplined<br>* Teamwork<br> *Extrovert
-	         		</p>
-
-	         	</div>
-
-				</div> <!-- /service -->
-
-				<div class="service ">
-
-					<span class="icon"><i class="icon-window"></i></span>
-
-	            <div class="service-content">
-
-	            	<h3>Interests :</h3>
-
-		            <p class="desc ">* Writing Quotes & Poems<br>* Listening to music <br>* Playing Cricket 
-
-	         		</p>
-
-	            </div>
-
-			   </div> <!-- /service -->
-
-
-
-   	</div> <!-- /services-content -->
-
-	</section> <!-- /services -->
-
-
-	<!-- stats Section
-   ================================================== -->
-
-
-   <!-- contact
-   ================================================== -->
-	<section id="contact">
-
-		<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h5>Contact</h5>
-			<br>
-   			<h1>I'd Love To Hear From You.</h1>
-
-
-
-   		</div>
-   	</div> <!-- /section-intro -->
-
-   	<div class="row contact-form">
-
-   		<div class="col-twelve">
-
-            <!-- form -->
-            <form id="contactform" action="https://formspree.io/xaydjonl" method="POST">
-
-      <input type="text" name="name" placeholder="Your Name">
-      <input type="email" name="_replyto" placeholder="Your email">
-      <textarea name="message" placeholder="Message from you"></textarea>
-      <input type="submit"class value="Send">
-  </form>
- 						    <!-- Form End -->
-
-            <!-- contact-warning -->
-            <div id="message-warning">
+    <!-- Background Glows -->
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+    <div class="bg-glow glow-3"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Siddharth<span>.</span></div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+                <a href="#" class="btn-primary" onclick="openChat()">Chat with AI</a>
             </div>
-            <!-- contact-success -->
-      		<div id="message-success">
-               <i class="fa fa-check"></i>Your message was sent, thank you!<br>
-      		</div>
+        </div>
+    </nav>
 
-         </div> <!-- /col-twelve -->
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text fade-up">
+                <div class="greeting">Hello, I'm</div>
+                <h1 class="name">Siddharth Kumar</h1>
 
-   	</div> <!-- /contact-form -->
+                <h2 class="role-title">Senior Software Engineer – Generative AI</h2>
+                <p class="role-desc">
+                    Senior Software Engineer with 4+ years of experience specializing in Generative AI, LLM-powered
+                    agents, and distributed data platforms. I build intelligent workflows that enable users to securely
+                    interact with complex enterprise data using natural language, orchestrating systems through
+                    LangChain, RAGAS, Langfuse, and the Model Context Protocol (MCP).
+                    <br><br>
+                    Beyond AI architecture, my core engineering foundation is built on Python, AWS, Apache Spark, and
+                    robust ETL pipelines. I implement the rigorous end-to-end automation and validation testing required
+                    to reduce manual investigation and ensure these agents are highly reliable, scalable, and fully
+                    production-ready.
+                </p>
 
-   <div class="row contact-info">
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-primary">Explore Work</a>
+                    <a href="certificate/SiddharthResume.pdf" class="btn-outline btn-text" target="_blank">
+                        Download Resume <i class="fa-solid fa-download"></i>
+                    </a>
+                </div>
+            </div>
 
-   		<div class="col-four tab-full">
+            <div class="hero-image-container fade-in" style="transition-delay: 0.3s;">
+                <img src="certificate/siddharth.png" alt="Siddharth Kumar"
+                    style="width: 280px; height: 280px; border-radius: 50%; border: 4px solid var(--accent-primary); object-fit: cover; box-shadow: 0 0 40px var(--accent-glow); transition: transform 0.4s ease;"
+                    onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+        </div>
+    </section>
 
-   			<div class="icon">
-   				<i class="icon-pin"></i>
-   			</div>
+    <!-- About Section -->
+    <section id="about" class="section bg-alt fade-up">
+        <div class="section-header">
+            <h2 class="section-title">The Engineer</h2>
+        </div>
 
-   			<h5>My address</h5>
+        <div class="about-grid">
+            <div class="about-text">
+                <p class="highlight-text">
+                    I am a versatile and result-driven professional specializing in Generative AI systems, LLM-powered
+                    agents, and distributed data platforms.
+                </p>
+                <p>
+                    My philosophy is rooted in end-to-end ownership. Building an AI model is only half the battle; the
+                    real complexity lies in the orchestration: evaluating hallucinations, verifying agentic tool calls,
+                    validating data streams, and scaling the infrastructure. By bridging advanced software development
+                    with rigorous quality automation, I deliver intelligent systems that actually work reliably in
+                    production. Furthermore, I am continually architecting for the future—actively anticipating and
+                    integrating next-generation frontier models like <strong>Opus 4.6</strong> and <strong>GPT
+                        5.2</strong> into my orchestration pipelines.
+                </p>
 
-   			<p>
-           Pune <br>
-            Maharashtra<br>
+                <div class="contact-badges">
+                    <span><i class="fa-solid fa-location-dot"></i> Pune, Maharashtra</span>
+                    <span><i class="fa-solid fa-envelope"></i> anandsiddhartha134@gmail.com</span>
+                    <span><i class="fa-solid fa-phone"></i> +91 7061483898</span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>4+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-card">
+                    <h3>2x</h3>
+                    <p>Dev Velocity (Vibe Coding)</p>
+                </div>
+                <div class="stat-card flex-col">
+                    <i class="fa-solid fa-trophy award-icon"></i>
+                    <p>Innovation Award</p>
+                    <small>PubMatic 2025</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unified Skills Section -->
+    <section id="skills" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Technical Arsenal</h2>
+        </div>
+
+        <div class="skills-container">
+            <!-- GenAI Box -->
+            <div class="skill-category">
+                <h3>GenAI & Agent Systems</h3>
+                <div class="skill-tags">
+                    <span class="tag" title="Open-source LLM evaluation framework">DeepEval</span>
+                    <span class="tag" title="Retrieval Augmented Generation Assessment">RAGAS</span>
+                    <span class="tag"
+                        title="Framework for developing applications powered by language models">LangChain</span>
+                    <span class="tag" title="Model Context Protocol for secure tool execution">FastMCP Usage</span>
+                    <span class="tag" title="Orchestrating multi-agent systems">Downstream Agent Calls</span>
+                </div>
+            </div>
+
+            <!-- Core Dev Box -->
+            <div class="skill-category">
+                <h3>Backend & Data Processing</h3>
+                <div class="skill-tags">
+                    <span class="tag" title="High-level programming language">Python</span>
+                    <span class="tag" title="Functional and object-oriented language for JVM">Scala</span>
+                    <span class="tag" title="Representational State Transfer APIs">REST APIs</span>
+                    <span class="tag" title="Unified analytics engine for large-scale data processing">Apache
+                        Spark</span>
+                    <span class="tag" title="Distributed event streaming platform">Kafka</span>
+                    <span class="tag" title="Open-source relational database">PostgreSQL</span>
+                    <span class="tag" title="Open-source relational database">MySQL</span>
+                </div>
+            </div>
+
+            <!-- Testing Box -->
+            <div class="skill-category">
+                <h3>Quality & Automation Engineering</h3>
+                <div class="skill-tags">
+                    <span class="tag" title="Open-source LLM evaluation framework">DeepEval</span>
+                    <span class="tag" title="Generic open source automation framework">Robot Framework</span>
+                    <span class="tag" title="Python testing framework">Pytest</span>
+                    <span class="tag" title="Browser automation framework">Selenium</span>
+                    <span class="tag" title="Ensuring data accuracy and quality">Data Validation</span>
+                    <span class="tag" title="Extract, Transform, Load testing">ETL Verification</span>
+                    <span class="tag" title="Testing REST APIs in Java">REST Assured</span>
+                    <span class="tag" title="API development and testing platform">Postman</span>
+                </div>
+            </div>
+
+            <!-- Infrastructure Box -->
+            <div class="skill-category">
+                <h3>Cloud, CI/CD & DevOps</h3>
+                <div class="skill-tags">
+                    <span class="tag">AWS (S3, EMR, Lambda)</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Kubernetes</span>
+                    <span class="tag">Datadog</span>
+                    <span class="tag">Splunk</span>
+                    <span class="tag">Jenkins</span>
+                    <span class="tag">TeamCity</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section (NEW) -->
+    <section id="projects" class="section bg-alt">
+        <div class="section-header">
+            <h2 class="section-title">Featured Engineering</h2>
+            <p style="color: var(--text-muted); margin-top: 1rem; font-size: 1.1rem; max-width: 600px;">
+                Showcasing high-impact systems where I combined advanced LLM development with rigorous, enterprise-grade
+                scalability.
             </p>
+        </div>
 
-   		</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   		<div class="col-four tab-full collapse">
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-icon"><i class="fa-solid fa-microchip"></i></div>
+                <div class="project-content">
+                    <h3>Deal Troubleshooting Agent</h3>
+                    <p>An enterprise AI orchestrator built with LangChain and Langfuse that autonomously diagnoses
+                        advertising deal failures, cutting manual resolution times.</p>
+                    <div class="skill-tags" style="margin-top: 1rem;">
+                        <span class="tag">LangChain</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Langfuse</span>
+                    </div>
+                </div>
+            </div>
 
-   			<div class="icon">
-   				<i class="icon-mail"></i>
-   			</div>
+            <div class="project-card">
+                <div class="project-icon"><i class="fa-solid fa-server"></i></div>
+                <div class="project-content">
+                    <h3>Enterprise MCP Framework</h3>
+                    <p>Developed an MCP server bridging secure internal databases with 20+ specialized AI agents for
+                        Claude Desktop. Architected secure authentication, defined strict tool boundaries, and managed
+                        downstream agent calls.</p>
+                    <div class="skill-tags" style="margin-top: 1rem;">
+                        <span class="tag">FastMCP</span>
+                        <span class="tag">Authentication</span>
+                        <span class="tag">Downstream Agents</span>
+                    </div>
+                </div>
+            </div>
 
-   			<h5>Drop me a mail </h5>
+            <div class="project-card">
+                <div class="project-icon"><i class="fa-solid fa-microscope"></i></div>
+                <div class="project-content">
+                    <h3>End-to-End AI Automation Framework</h3>
+                    <p>Automation framework to test AI agent hallucination, correctness, completeness and backend
+                        validation. I build reliable AI-driven automation that drastically reduces manual investigation,
+                        improves operational efficiency, and ensures production-ready systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-   			<p>anandsiddhartha134@gmail.com
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Experience</h2>
+        </div>
 
+        <div class="timeline">
+            <!-- PubMatic -->
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content-card">
+                    <div class="timeline-header">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="background: var(--accent-primary); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 8px; box-shadow: 0 0 10px var(--accent-glow);">
+                                <i class="fa-solid fa-server" style="color: white; font-size: 1.2rem;"></i>
+                            </div>
+                            <div>
+                                <h3><a href="https://pubmatic.com" target="_blank"
+                                        style="text-decoration: none; color: #fff; transition: color 0.3s;"
+                                        onmouseover="this.style.color='var(--accent-primary)'"
+                                        onmouseout="this.style.color='#fff'">PubMatic <i
+                                            class="fa-solid fa-arrow-up-right-from-square"
+                                            style="font-size: 0.8rem; margin-left: 5px; color: var(--accent-primary);"></i></a>
+                                </h3>
+                                <h4>Senior Software Engineer - Generative AI</h4>
+                            </div>
+                        </div>
+                        <span class="timeline-date">Feb 2025 — Present</span>
+                    </div>
+                    <ul class="timeline-bullets">
+                        <li>Developed the <strong>Deal Troubleshooting Agent</strong> using LangChain and Langfuse,
+                            drastically cutting down manual resolution times.</li>
+                        <li>Built and validated an <strong>MCP server</strong> enabling seamless integration with
+                            internal tools and orchestrating tool-call routing across 20+ specialized agents for Claude
+                            Desktop and Cursor.</li>
+                        <li>Created an end-to-end automation framework for GenAI-based agents utilizing Pytest and
+                            DeepEval (hallucination detection, GEval checks).</li>
+                        <li>Designed a natural-language query configuration flow integrated with Milvus for vector-based
+                            ID lookups to ensure accurate LLM response generation.</li>
+                    </ul>
+                </div>
+            </div>
 
-			   </p>
+            <!-- ZS Associates -->
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content-card">
+                    <div class="timeline-header">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="background: var(--accent-secondary); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 8px; box-shadow: 0 0 10px var(--accent-glow);">
+                                <i class="fa-solid fa-chart-line" style="color: white; font-size: 1.2rem;"></i>
+                            </div>
+                            <div>
+                                <h3><a href="https://zs.com" target="_blank"
+                                        style="text-decoration: none; color: #fff; transition: color 0.3s;"
+                                        onmouseover="this.style.color='var(--accent-primary)'"
+                                        onmouseout="this.style.color='#fff'">ZS Associates <i
+                                            class="fa-solid fa-arrow-up-right-from-square"
+                                            style="font-size: 0.8rem; margin-left: 5px; color: var(--accent-primary);"></i></a>
+                                </h3>
+                                <h4>Software Engineer in Test</h4>
+                            </div>
+                        </div>
+                        <span class="timeline-date">Jul 2022 — Jan 2025</span>
+                    </div>
+                    <ul class="timeline-bullets">
+                        <li>Led end-to-end testing of data driven AI empowered applications, specifically focusing on
+                            backend databases, ETL Pipelines, and APIs.</li>
+                        <li>Scaled application capability by <strong>4x</strong> by collaborating with developers to
+                            analyze query plans and provide actionable insights.</li>
+                        <li>Automated reporting via massive CI/CD pipelines leveraging TeamCity and Docker.</li>
+                        <li><strong>Award:</strong> Received Learning Champion Award for outstanding contributions to
+                            continuous learning initiatives.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-   		</div>
+    <!-- Education & More -->
+    <section id="more" class="section bg-alt">
+        <div class="section-header">
+            <h2 class="section-title">Education & Personal</h2>
+        </div>
 
-   		<div class="col-four tab-full">
+        <div class="skills-container">
+            <!-- Education Box -->
+            <div class="skill-category">
+                <h3><i class="fa-solid fa-graduation-cap" style="color:var(--accent-primary); margin-right:8px;"></i>
+                    Education</h3>
+                <div style="margin-top: 1rem;">
+                    <h4 style="color: var(--text-main); font-size: 1.1rem;">Bachelor of Technology</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Lovely Professional University (LPU)</p>
+                    <span class="tag"
+                        style="background: var(--accent-glow); border-color: var(--accent-primary); color: white;">CGPA:
+                        8.5</span>
+                </div>
+            </div>
 
-   			<div class="icon">
-   				<i class="icon-phone"></i>
-   			</div>
+            <!-- Languages Box -->
+            <div class="skill-category">
+                <h3><i class="fa-solid fa-earth-americas" style="color:var(--accent-primary); margin-right:8px;"></i>
+                    Linguistic Mastery</h3>
+                <div class="skill-tags" style="margin-top:1rem;">
+                    <span class="tag">English (Professional)</span>
+                    <span class="tag">Hindi (Native)</span>
+                    <span class="tag">Maithili (Native)</span>
+                </div>
+            </div>
 
-   			<h5>Call Me At</h5>
+            <!-- Personality Box -->
+            <div class="skill-category">
+                <h3><i class="fa-regular fa-face-smile" style="color:var(--accent-primary); margin-right:8px;"></i>
+                    Personality & Interests</h3>
+                <div class="skill-tags" style="margin-top:1rem;">
+                    <span class="tag">Writing Quotes & Poems</span>
+                    <span class="tag">Playing Cricket</span>
+                    <span class="tag">Listening to Music</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-   			<p>Phone:
-			   	+91 7061483898<br>
+    <!-- Direct Contact Form Section -->
+    <section id="contact" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="color: var(--text-muted); margin-top: 1rem; font-size: 1.1rem; max-width: 600px;">
+                Looking for a GenAI Engineer with extreme velocity and massive scale automation chops? Let's talk.
+            </p>
+        </div>
 
-			   </p>
+        <div class="contact-form-container"
+            style="max-width: 600px; background: rgba(20, 20, 25, 0.7); border: 1px solid var(--glass-border); padding: 2rem; border-radius: 1rem;">
+            <form id="main-contact-form" action="https://formspree.io/xaydjonl" method="POST"
+                style="display: flex; flex-direction: column; gap: 1rem;">
+                <div class="form-group">
+                    <input type="text" name="name" id="ui-contact-name" placeholder="Your Name" required
+                        style="width: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 0.5rem; color: white; outline: none;">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="_replyto" id="ui-contact-email" placeholder="Your Email" required
+                        style="width: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 0.5rem; color: white; outline: none;">
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" id="ui-contact-phone" placeholder="Your Phone Number" required
+                        style="width: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 0.5rem; color: white; outline: none;">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" id="ui-contact-msg" placeholder="Message or Inquiry..." rows="5" required
+                        style="width: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 0.5rem; color: white; outline: none; font-family: inherit; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" id="ui-contact-submit" class="btn-primary"
+                    style="width: 100%; border-radius: 0.5rem; padding: 1rem; font-size: 1.1rem; margin-top: 0.5rem;">Send
+                    Message to Siddharth</button>
 
-   		</div>
+                <div id="ui-form-status"
+                    style="display: none; padding: 1rem; border-radius: 0.5rem; text-align: center; margin-top: 0.5rem; font-weight: 500;">
+                </div>
+            </form>
+        </div>
+    </section>
 
-   	</div> <!-- /contact-info -->
+    <!-- Chatbot Widget -->
+    <div class="chat-wrapper">
+        <div class="chatbot-trigger" onclick="toggleChat()">
+            <i class="fa-solid fa-robot chatbot-icon"></i>
+        </div>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chat-header">
+                <div class="header-info">
+                    <div class="bot-avatar"><i class="fa-solid fa-bolt"></i></div>
+                    <div>
+                        <h4>Siddharth's AI</h4>
+                        <span><i class="fa-solid fa-circle"
+                                style="font-size: 0.5rem; color: #10b981; margin-right:4px;"></i>Powered by RAG</span>
+                    </div>
+                </div>
+                <button class="close-chat" onclick="toggleChat()"><i class="fa-solid fa-times"></i></button>
+            </div>
 
-	</section> <!-- /contact -->
-	
+            <div class="chat-body" id="chat-body">
+                <div class="message bot-message">
+                    Hi! I'm an AI assistant built to help you learn about Siddharth's work. Ask me about his GenAI
+                    projects, automation expertise, or type <strong>'contact'</strong> to send him a direct email.
+                </div>
+            </div>
 
+            <div class="chat-input-area" id="default-input">
+                <input type="text" id="chat-input" placeholder="Ask about PubMatic, Skills..."
+                    onkeypress="handleEnter(event)">
+                <button onclick="handleUserMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
 
-   <!-- footer
-   ================================================== -->
+            <!-- Email form overlay inside chat -->
+            <div class="chat-email-form" id="email-form" style="display: none;">
+                <input type="text" id="contact-name" placeholder="Your Name">
+                <input type="email" id="contact-email" placeholder="Your Email">
+                <input type="tel" id="contact-phone" placeholder="Your Phone Number">
+                <textarea id="contact-msg" placeholder="Your Message..."></textarea>
+                <div class="form-actions">
+                    <button class="btn-cancel" onclick="cancelEmail()">Cancel</button>
+                    <button class="btn-send" onclick="sendEmail()">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-   <footer>
-     	<div class="row">
-        <div class="col-six tab-full pull-right social">
+    <!-- Footer -->
+    <footer>
+        <div class="nav-container footer-content">
+            <div class="footer-logo logo">Siddharth<span>.</span></div>
+            <div class="social-links">
+                <a href="https://github.com/siddhhu" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/siddharth-kumar-907a85169/" target="_blank"><i
+                        class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/feed/my_videos" target="_blank"><i
+                        class="fa-brands fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2026 Siddharth Kumar. Engineered perfectly.</p>
+        </div>
+    </footer>
 
-             			<ul class="footer-social">
-        			      
-        			      <li><a target="_blank"href="https://www.linkedin.com/in/siddharth-kumar-907a85169/"><i class="fa fa-linkedin"></i></a></li>
-        			      <li><a target="_blank"href="https://github.com/siddhhu"><i class="fa fa-github" aria-hidden="true"></i>
-</a></li>
-					 <li><a target="_blank"href="https://www.youtube.com/feed/my_videos"><i class="fa fa-youtube" aria-hidden="true"></i>
-</a></li>
-        			   </ul>
-
-        	      </div>
-
-	      	<div id="go-top">
-		         <a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
-		      </div>
-
-      	</div> <!-- /row -->
-   </footer>
-
-   <div id="preloader">
-    	<div id="loader"></div>
-   </div> 
-
-   <!-- Java Script
-   ================================================== -->
-   <script src="js/jquery-2.1.3.min.js"></script>
-   <script src="js/plugins.js"></script>
-   <script src="js/main.js"></script>
-
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
 </body>
 
 </html>
