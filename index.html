@@ -191,9 +191,9 @@
                     <h3>2x</h3>
                     <p>Dev Velocity (Vibe Coding)</p>
                 </div>
-                <div class="stat-card flex-col">
-                    <i class="fa-solid fa-trophy award-icon"></i>
-                    <p>Innovation Award</p>
+                <div class="stat-card flex-col" style="grid-column: span 2;">
+                    <i class="fa-solid fa-trophy award-icon" style="font-size: 2rem;"></i>
+                    <p style="margin-top: 0.5rem;">Innovation Award</p>
                     <small>PubMatic 2025</small>
                 </div>
             </div>
@@ -215,8 +215,11 @@
                     <span class="tag" title="Retrieval Augmented Generation Assessment">RAGAS</span>
                     <span class="tag"
                         title="Framework for developing applications powered by language models">LangChain</span>
-                    <span class="tag" title="Model Context Protocol for secure tool execution">FastMCP Usage</span>
-                    <span class="tag" title="Orchestrating multi-agent systems">Downstream Agent Calls</span>
+                    <span class="tag" title="Open source LLM engineering platform">Langfuse</span>
+                    <span class="tag" title="Crafting inputs for optimal LLM generation">Prompt Engineering</span>
+                    <span class="tag" title="Model Context Protocol implementation for Python">FASTMCP</span>
+                    <span class="tag" title="Open standard for AI agents to connect with data sources">MCP</span>
+                    <span class="tag" title="High-dimensional embedding storage and retrieval">Vector Databases</span>
                 </div>
             </div>
 
@@ -226,12 +229,17 @@
                 <div class="skill-tags">
                     <span class="tag" title="High-level programming language">Python</span>
                     <span class="tag" title="Functional and object-oriented language for JVM">Scala</span>
+                    <span class="tag" title="Modern, fast web framework for building APIs with Python">FastAPI</span>
                     <span class="tag" title="Representational State Transfer APIs">REST APIs</span>
                     <span class="tag" title="Unified analytics engine for large-scale data processing">Apache
                         Spark</span>
                     <span class="tag" title="Distributed event streaming platform">Kafka</span>
+                    <span class="tag"
+                        title="In-memory data structure store, used as a database, cache, and message broker">Redis
+                        (Caching)</span>
                     <span class="tag" title="Open-source relational database">PostgreSQL</span>
                     <span class="tag" title="Open-source relational database">MySQL</span>
+                    <span class="tag" title="Distributed version control system">Git</span>
                 </div>
             </div>
 
@@ -532,13 +540,27 @@
     <footer>
         <div class="nav-container footer-content">
             <div class="footer-logo logo">Siddharth<span>.</span></div>
-            <div class="social-links">
+            <div class="social-links" style="margin-bottom: 2rem;">
                 <a href="https://github.com/siddhhu" target="_blank"><i class="fa-brands fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/siddharth-kumar-907a85169/" target="_blank"><i
                         class="fa-brands fa-linkedin-in"></i></a>
                 <a href="https://www.youtube.com/feed/my_videos" target="_blank"><i
                         class="fa-brands fa-youtube"></i></a>
             </div>
+
+            <!-- Compact Premium Visitor Counter Badge -->
+            <div class="visitor-count-badge"
+                style="display: inline-flex; align-items: center; gap: 0.8rem; background: rgba(20, 20, 25, 0.6); border: 1px solid rgba(139, 92, 246, 0.3); padding: 0.6rem 1.2rem; border-radius: 2rem; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); margin-bottom: 1.5rem; transition: transform 0.3s ease, border-color 0.3s ease;"
+                onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='var(--accent-primary)';"
+                onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(139, 92, 246, 0.3)';">
+                <i class="fa-solid fa-users" style="color: var(--accent-secondary); font-size: 1.1rem;"></i>
+                <span
+                    style="color: var(--text-muted); font-size: 0.95rem; font-weight: 500; letter-spacing: 0.5px;">Distinct
+                    Profiles Reached:</span>
+                <span id="visitor-number"
+                    style="font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.4)); min-width: 2rem; text-align: left;">0</span>
+            </div>
+
             <p>&copy; 2026 Siddharth Kumar. Engineered perfectly.</p>
         </div>
     </footer>
