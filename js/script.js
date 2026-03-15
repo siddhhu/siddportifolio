@@ -324,4 +324,58 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         observer.observe(el);
     });
+
+    // 3. Update Visitor Count
+    const visitorCountEl = document.getElementById('visitor-number');
+    if (visitorCountEl) {
+        const hasVisited = localStorage.getItem('siddportifolio_visited');
+        let API_URL = 'https://api.counterapi.dev/v1/siddhhu/siddportifolio';
+
+        if (!hasVisited) {
+            API_URL += '/up';
+            localStorage.setItem('siddportifolio_visited', 'true');
+        } else {
+            API_URL += '/'; // Trailing slash prevents 301 redirect CORS errors
+        }
+
+        fetch(API_URL)
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.count) {
+                    // Smooth easing counter animation
+                    const target = data.count;
+                    const duration = 2500; // Force a 2.5 second dramatic animation
+                    let startTime = null;
+
+                    const updateCounter = (currentTime) => {
+                        if (!startTime) startTime = currentTime;
+                        const elapsed = currentTime - startTime;
+
+                        // Calculate progress (0 to 1)
+                        const progress = Math.min(elapsed / duration, 1);
+
+                        // Use an ease-out cubic function for a smooth slowdown at the end
+                        const easeOut = 1 - Math.pow(1 - progress, 3);
+                        const current = Math.floor(easeOut * target);
+
+                        visitorCountEl.innerText = current.toLocaleString();
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            visitorCountEl.innerText = target.toLocaleString();
+                        }
+                    };
+
+                    // Start animation
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    visitorCountEl.innerText = "Unavailable";
+                }
+            })
+            .catch(err => {
+                console.error("Error fetching visitor count:", err);
+                visitorCountEl.innerText = "Unavailable";
+            });
+    }
 });
